@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}    
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Cam Details</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+              <li class="breadcrumb-item active">CamTables</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">CamTable with minimal features & hover style</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Camera Name</th>
+                    <th>Camera ID</th>
+                    <th>Direction ID1</th>
+                    <th>Direction Name1</th>
+                    <th>Direction coordinates1</th>
+                    <th>Direction ID2</th>
+                    <th>Direction Name2</th>
+                    <th>Direction coordinates2</th>
+                    <th>Direction ID3</th>
+                    <th>Direction Name3</th>
+                    <th>Direction coordinates3</th>
+                    <th>Direction ID4</th>
+                    <th>Direction Name4</th>
+                    <th>Direction coordinates4</th>
+                    <th class="text-right py-0 align-middle">
+                      Action
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+{% for field in context %}
+                  <tr>
+                    <td>{{field.id}}</td>
+                    <td>{{field.camera_name}}</td>
+                    <td>{{field.camera_id}}</td>
+                    <td> {{field.direction_id1}}</td>
+                    <td> {{field.direction_name1}}</td>
+                    <td> {{field.direction_coordinates1}}</td>
+                    <td> {{field.direction_id2}}</td>
+                    <td> {{field.direction_name2}}</td>
+                    <td> {{field.direction_coordinates2}}</td>
+                    <td> {{field.direction_id3}}</td>
+                    <td> {{field.direction_name3}}</td>
+                    <td> {{field.direction_coordinates3}}</td>
+                    <td> {{field.direction_id4}}</td>
+                    <td> {{field.direction_name4}}</td>
+                    <td> {{field.direction_coordinates4}}</td>
+                   
+                    <td class="text-right py-0 align-middle">
+                      <div class="btn-group btn-group-sm">
+                        <a href="{% url 'edit_cam' field.id %}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                        <a href="{% url 'delete_cam' field.id %}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+{% endfor %}
+                                
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper --> 
+{% endblock content %}
